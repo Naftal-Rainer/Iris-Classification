@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css')}}">
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="content">
+
+            <form action="/sub" method="post">
+
+                <label for="">Sepal Length</label>
+                <input type="number" name="sepal_l" id="">
+                <br>
+                <label for="">Sepal Width</label>
+                <input type="number" name="sepal_w" id="">
+                <br>
+                <label for="">Petal Length</label>
+                <input type="number" name="petal_l" id="">
+                <br>
+                <label for="">Petal Width</label>
+                <input type="number" name="petal_w" id="">
+                <br>
+                <input type="submit" value="Predict" id="button">
+            
+            </form>
+            <br>
+
+            {% if species == 'virginica' %}
+            <div class="specy" style="background-image: url('../static/virginica.jpg');"> </div>
+            {% elif species == 'setosa' %}
+            <div class="specy" style="background-image: url('../static/setosa.jpg');"> </div>
+            {% elif species == 'versicolor' %}
+            <div class="specy" style="background-image: url('../static/versicolor.jpg');"> </div>
+            {% else %}
+            <div class="specy" style="display: none;"> </div>
+            {% endif %}
+
+                
+
+        </div>
+
+        <div class="result">  
+
+            <p>The predicted flower species is : <span> {{ species }} </span> </p>
+            <p>Accuracy :  <span> {{ accuracy }} </span> </p>   
+
+        </div>
+
+    </div>
+
+</body>
+</html>
